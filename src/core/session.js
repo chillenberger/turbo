@@ -218,7 +218,7 @@ export class Session {
   willFollowLinkToLocation(link, location, event) {
     return (
       this.elementIsNavigatable(link) &&
-      locationIsVisitable(location, this.snapshot.rootLocation) &&
+      locationIsVisitable(location, this.snapshot.rootLocation, link) &&
       this.applicationAllowsFollowingLinkToLocation(link, location, event)
     )
   }
