@@ -2,6 +2,7 @@ import { doesNotTargetIFrame, findLinkFromClickTarget, getLocationForLink } from
 
 export class LinkClickObserver {
   started = false
+  target = null
 
   constructor(delegate, eventTarget) {
     this.delegate = delegate
@@ -29,6 +30,7 @@ export class LinkClickObserver {
 
   clickBubbled = (event) => {
     if (event instanceof MouseEvent && this.clickEventIsSignificant(event)) {
+      this.target = event.target
       const target = (event.composedPath && event.composedPath()[0]) || event.target
       const link = findLinkFromClickTarget(target)
       if (link && doesNotTargetIFrame(link)) {
