@@ -11,8 +11,7 @@ export class BrowserAdapter {
   }
 
   visitProposedToLocation(location, options) {
-    let is_visitable = locationIsVisitable(location, this.navigator.rootLocation, this.navigator.delegate.linkClickObserver.target)
-    if ( is_visitable) {
+    if (locationIsVisitable(location, this.navigator.rootLocation)) {
       this.navigator.startVisit(location, options?.restorationIdentifier || uuid(), options)
     } else {
       window.location.href = location.toString()

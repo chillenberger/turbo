@@ -31,8 +31,8 @@ export function isPrefixedBy(baseURL, url) {
   return baseURL.href === expandURL(prefix).href || baseURL.href.startsWith(prefix)
 }
 
-export function locationIsVisitable(location, rootLocation, linkElement) {
-  return (isPrefixedBy(location, rootLocation) && isHTML(location)) || linkElement?.hasAttribute("data-turbo-is-visitable")
+export function locationIsVisitable(location, rootLocation) {
+  return isPrefixedBy(location, rootLocation) && isHTML(location)
 }
 
 export function getRequestURL(url) {
